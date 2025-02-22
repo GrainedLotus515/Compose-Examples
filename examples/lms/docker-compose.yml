@@ -1,0 +1,36 @@
+services:
+
+  music:
+    image: epoupon/lms
+    container_name: LMS
+    user: 1000:1000
+    #depends_on:
+    #  - xxx
+    restart: unless-stopped
+    ports:
+      - 5082:5082
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/lms/music:/music:ro
+      - ${DOCKER_VOLUME_STORAGE:-/mnt/docker-volumes}/lms/configs:/var/lms:rw
+    environment:
+      - PUID=1000
+      - PGID=1000
+    #networks:
+    #  - proxy
+    #labels:
+    #  - traefik.enable=true
+    #  - traefik.docker.network=proxy
+    #  - traefik.http.routers.light-music-server.rule=Host(`lms.example.com`)
+    #  - traefik.http.services.light-music-server.loadbalancer.server.port=5082
+    #  # Optional part when proxying to services that already provide ssl/tls  
+    #  - traefik.http.services.light-music-server.loadbalancer.server.scheme=https
+    #  - traefik.http.services.light-music-server.loadbalancer.serverstransport=insecureTransport@file
+    #  # Optional part for file upload max sizes
+    #  - traefik.http.middlewares.limit-light-music-server.buffering.maxRequestBodyBytes=50000000
+    #  - traefik.http.middlewares.limit-light-music-server.buffering.maxResponseBodyBytes=50000000
+    #  - traefik.http.middlewares.limit-light-music-server.buffering.memRequestBodyBytes=50000000
+    #  - traefik.http.middlewares.limit-light-music-server.buffering.memResponseBodyBytes=50000000
+    #  # Optional part for traefik middlewares
+    #  - traefik.http.routers.light-music-server.middlewares=local-ipwhitelist@file,crowdsec@file,limit-light-music-server
