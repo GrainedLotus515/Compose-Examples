@@ -31,7 +31,7 @@
 
 Otherwise, it should be a matter of:
 ````
-git clone https://github.com/Haxxnet/Compose-Examples && cd Compose-Examples
+git clone https://github.com/Haxxnet/Compose-Examples && cd Compose-Examples/examples
 cd <container-of-interest>
 
 # read the notes, comments and adjust compose + volumes + configs
@@ -54,7 +54,7 @@ docker compose up
 - [Automation and Monitoring](#automation-and-monitoring)
 - [Backups](#backups)
 - [Blogging Platforms and Homepages](#blogging-platforms-and-homepages)
-- [Communication - Social Networks, Forums and Video Conferencing](#communication---social-networks-forums-and-video-conferencing)
+- [Communication - Social Networks, Webclients, Forums and Video Conferencing](#communication---social-networks-webclients-forums-and-video-conferencing)
 - [Document Management](#document-management)
 - [Domain Name Service (DNS)](#domain-name-service-dns)
 - [E-commerce](#e-commerce)
@@ -63,6 +63,7 @@ docker compose up
 - [Genealogy](#genealogy)
 - [Identity Management - Single Sign-On (SSO) & LDAP](#identity-management---single-sign-on-sso--ldap)
 - [LLM & AI](#large-language-models--ai)
+- [Metrics & Metric Collection](#metrics--metric-collection)
 - [Miscellaneous](#miscellaneous)
 - [Money, Budgeting & Management](#money-budgeting--management)
 - [Note-taking & Editors](#note-taking--editors)
@@ -157,7 +158,7 @@ A [VPN](https://en.wikipedia.org/wiki/Virtual_private_network) is a mechanism fo
 - [AdGuard Home](examples/adguard-home) - AdGuard Home is a network-wide software for blocking ads and tracking.
 - [AdGuard Home Sync](examples/adguard-home-sync) - Synchronize AdGuardHome config to replica instances.
 - [Technitium DNS](examples/technitium-dns) - An open source authoritative as well as recursive DNS server that can be used for self hosting a DNS server for privacy & security.
-- [Pihole](examples/pihole) - Pi-hole is a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole and optionally a DHCP server, intended for use on a private network.
+- [Pi-hole](examples/pi-hole) - Pi-hole is a Linux network-level advertisement and Internet tracker blocking application which acts as a DNS sinkhole and optionally a DHCP server, intended for use on a private network.
 - [Cloudflare DDNS](examples/cloudflare-ddns) - Dynamic DNS (DDNS) is a service that keeps the DNS updated with a web property's correct IP address, even if that IP address is constantly being updated.
 
 ### Software Development - Project Management, DevOps
@@ -170,7 +171,7 @@ Tools and software for [software project management](https://en.wikipedia.org/wi
 - [Leantime](examples/leantime) - Leantime is an open source project management system for small teams and startups written in PHP, Javascript using MySQL.
 - [Gitea](examples/gitea) - Community managed fork of Gogs, lightweight code hosting solution.
 - [Drone](examples/drone) - Drone is a continuous delivery system built on container technology. Drone uses a simple YAML build file, to define and execute build pipelines inside Docker containers.
-- [Gitlab Community](examples/gitlab-ce) -  Self Hosted Git repository management, code reviews, issue tracking, activity feeds and wikis.
+- [Gitlab Community](examples/gitlab) -  Self Hosted Git repository management, code reviews, issue tracking, activity feeds and wikis.
 - [Code-Server](examples/code-server) - VS Code in the browser, hosted on a remote server.
 - [Onedev](examples/onedev) - Self-hosted Git Server with CI/CD and Kanban.
 - [Atlassian Jira Core](examples/atlassian-jira-confluence) - Jira Core is a project and task management solution built for business teams.
@@ -249,6 +250,7 @@ Digital [archiving](https://en.wikipedia.org/wiki/Archival_science) and [preserv
 - [Archivebox](examples/archivebox) - ArchiveBox is a powerful, self-hosted internet archiving solution to collect, save, and view websites offline.
 - [Shiori](examples/shiori) - Simple bookmark manager and website archiver built with Go.
 - [Readeck](examples/readeck) - Readeck is a simple web application that lets you save the precious readable content of web pages you like and want to keep forever.
+- [Linkwarden](examples/linkwarden) - Self-hosted collaborative bookmark manager to collect, organize, and preserve webpages, articles, and documents.
 
 ### Document Management
 
@@ -331,17 +333,18 @@ A [blog](https://en.wikipedia.org/wiki/Blog) is a discussion or informational we
 - [WordPress](examples/wordpress) - WordPress is a free and open-source content management system written in hypertext preprocessor language and paired with a MySQL or MariaDB database with supported HTTPS.
 - [Nginx + PHP](examples/nginx-php) - Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. Combined with PHP, a general-purpose scripting language geared toward web development, server-side functions can be implemented for the webs.
 
-### Communication - Social Networks, Forums and Video Conferencing
+### Communication - Social Networks, Webclients, Forums and Video Conferencing
 
 **[`^        back to top        ^`](#-project-list)**
 
-[Social Networking](https://en.wikipedia.org/wiki/Social_networking_service) and [Forum](https://en.wikipedia.org/wiki/Internet_forum) software.
+[Social Networking](https://en.wikipedia.org/wiki/Social_networking_service), [Webmail clients](https://en.wikipedia.org/wiki/Webmail), [Video Conferencing](https://en.wikipedia.org/wiki/Web_conferencing) and [Forum](https://en.wikipedia.org/wiki/Internet_forum) software.
 
 - [Rocket.Chat](examples/rocketchat) - Rocket.Chat is an open-source fully customizable communications platform developed in JavaScript for organizations with high standards of data protection.
 - [Mattermost](examples/mattermost) - Mattermost is an open source platform for secure collaboration across the entire software development lifecycle.
 - [Answer](examples/answer) - An open-source knowledge-based community software. You can use it quickly to build Q&A community for your products, customers, teams, and more.
 - [Mirotalk P2P](examples/mirotalk) - Simple, Secure, Fast Real-Time Video Conferences Up to 4k and 60fps, compatible with all browsers and platforms.
 - [Reactive-Resume](examples/rxresume) - A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever.
+- [Roundcube](examples/roundcube) - Roundcube Webmail is a browser-based multilingual IMAP client with an application-like user interface. It provides full functionality you expect from an email client, including MIME support, address book, folder management, message searching and spell checking.
 
 ### E-commerce
 
@@ -444,6 +447,16 @@ Multiplayer game servers, browser games and utilities for managing game servers.
 - [cs2-dedicated-server](examples/cs2-dedicated-server) - CS2 Dedicated Server Docker Image with an RCON web-based control panel.
 - [posio](examples/posio) - A multiplayer geography game using Websockets.
 - [Monkeytype](examples/monkeytype) - The most customizable typing website with a minimalistic design and a ton of features. Test yourself in various modes, track your progress and improve your speed.
+- [GZCTF](examples/gzctf) - The GZ::CTF project, an open source CTF platform.
+
+### Metrics & Metric Collection
+
+**[`^        back to top        ^`](#-project-list)**
+
+Metric gathering and display software.
+
+- [Grafana](examples/grafana) - The open and composable observability and data visualization platform. Visualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more.
+- [Grafana-LRVT](examples/grafana-monitoring) - Grafana combined with other open-source tools like Loki, Promtail, InfluxDB and Telegraf.
 
 ### Miscellaneous
 

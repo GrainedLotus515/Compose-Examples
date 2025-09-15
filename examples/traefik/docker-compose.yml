@@ -1,7 +1,7 @@
 services:
 
   traefik:
-    image: traefik:v3.3
+    image: traefik:v3.5
     container_name: traefik
     restart: always
     ports:
@@ -29,13 +29,13 @@ services:
     extra_hosts:
       - host.docker.internal:172.17.0.1
     security_opt:
-      - no-new-privileges:true      
+      - no-new-privileges:true
     networks:
       - proxy
       - docker-proxynet
 
   socket-proxy:
-    image: lscr.io/linuxserver/socket-proxy:1.26.2
+    image: lscr.io/linuxserver/socket-proxy:latest
     container_name: socket-proxy
     environment:
       - CONTAINERS=1
