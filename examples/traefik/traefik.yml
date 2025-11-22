@@ -17,7 +17,7 @@ log:
 #  plugins:
 #    bouncer:
 #      moduleName: github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin
-#      version: v1.4.5
+#      version: v1.4.6
 
 #metrics:
 #  influxDB2:
@@ -99,13 +99,16 @@ entryPoints:
     #http3:
     #  advertisedPort: '443'      
     http:
-      tls:
-        # Generate a wildcard domain certificate
-        certResolver: myresolver
-        domains:
-          - main: example.com # change this to your proxy domain
-            sans:
-              - '*.example.com' # change this to your proxy domain
+      # use dynamically generated self-signed certificate
+      tls: {}
+      # or use a pre-defined certificate resolver from below
+      # if so, remove above line with tls: {}
+      #tls:
+      #  certResolver: myresolver-dns
+      #  domains:
+      #    - main: example.com # change this to your proxy domain
+      #      sans:
+      #        - '*.example.com' # change this to your proxy domain
       middlewares:
         - security-headers@file # reference to a dynamic middleware for setting http security headers per default
         - rate-limit@file # reference to a dynamic middleware for enabling rate limiting per default
@@ -129,15 +132,20 @@ providers:
 
 # Use letsencrypt to generate ssl certificates
 certificatesResolvers:
-  myresolver:
+  # ACME HTTP CHALLENGE
+  myresolver-http:
     acme:
       email: example@example.com  # the email address used for ssl certificate registration
       storage: /etc/traefik/acme.json
-      #httpChallenge: # acme http challenge; requires port 80 and proper dns entries
-      #  entryPoint: http # specify the entry point for the HTTP challenge (adjust if needed)
+      httpChallenge: # acme http challenge; requires port 80 and proper dns entries
+        entryPoint: http # specify the entry point for the HTTP challenge (adjust if needed)
+  # ACME DNS CHALLENGE
+  myresolver-dns:
+    acme:
+      email: example@example.com  # the email address used for ssl certificate registration
+      storage: /etc/traefik/acme.json
       dnsChallenge: # acme dns challenge; requires api token of dns provider
         provider: cloudflare
-        # Used to make sure the dns challenge is propagated to the right dns servers
         resolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
